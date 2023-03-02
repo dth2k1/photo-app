@@ -3,4 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_one :payment
+  accepts_nested_attributes_for :payment, reject_if: :all_blank?, allow_destroy: true
 end
